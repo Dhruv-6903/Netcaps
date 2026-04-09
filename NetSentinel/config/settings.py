@@ -1,0 +1,11 @@
+VT_API_KEY = ""
+ABUSEIPDB_API_KEY = ""
+GEOIP_DB_PATH = "assets/GeoLite2-City.mmdb"
+MANUF_PATH = "assets/manuf"
+OUTPUT_DIR = "output/extracted_files"
+REPORTS_DIR = "output/reports"
+HASH_BLOCKLIST_PATH = ""
+IP_BLOCKLIST_PATH = ""
+MASK_PASSWORDS = False
+VT_RATE_LIMIT = 4
+VT_DELAY = 15.0
