@@ -4,15 +4,10 @@ from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QTextEdit,
 from PyQt5.QtGui import QFont, QTextCharFormat, QColor, QTextCursor
 from PyQt5.QtCore import Qt
 
+from core.constants import MAGIC_SIGNATURES as _CORE_MAGIC
 
-MAGIC_SIGNATURES = {
-    b"\x25\x50\x44\x46": "PDF",
-    b"\xff\xd8\xff": "JPEG",
-    b"\x89\x50\x4e\x47": "PNG",
-    b"\x50\x4b\x03\x04": "ZIP",
-    b"\x4d\x5a": "MZ/EXE",
-    b"\xd0\xcf\x11\xe0": "OLE/Office",
-}
+# Build a name-only lookup dict for the hex viewer display
+MAGIC_SIGNATURES = {sig: desc for sig, (desc, _ext) in _CORE_MAGIC.items()}
 
 
 def _hex_dump(data: bytes, width: int = 16) -> str:

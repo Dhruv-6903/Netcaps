@@ -16,15 +16,11 @@ except Exception:
     _MAGIC_AVAILABLE = False
 
 from config import settings
+from core.constants import MAGIC_SIGNATURES as _MAGIC_SIGS
 
-# Magic bytes for file carving
+# Build FILE_SIGNATURES list from shared constants for file carving
 FILE_SIGNATURES = [
-    (b"\x25\x50\x44\x46", "pdf", ".pdf"),
-    (b"\xff\xd8\xff", "jpeg", ".jpg"),
-    (b"\x89\x50\x4e\x47", "png", ".png"),
-    (b"\x50\x4b\x03\x04", "zip", ".zip"),
-    (b"\x4d\x5a", "exe", ".exe"),
-    (b"\xd0\xcf\x11\xe0", "ole", ".doc"),
+    (sig, desc.lower(), ext) for sig, (desc, ext) in _MAGIC_SIGS.items()
 ]
 
 _COUNTER = defaultdict(int)

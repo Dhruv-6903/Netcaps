@@ -114,7 +114,7 @@ class AnomalyDetector:
         # Data exfiltration tracking
         if _is_internal(src_ip) and not _is_internal(dst_ip):
             self._session_bytes[(src_ip, dst_ip)] += pkt_len
-            if self._session_bytes[(src_ip, dst_ip)] == pkt_len + 100 * 1024 * 1024:
+            if self._session_bytes[(src_ip, dst_ip)] >= 100 * 1024 * 1024:
                 self._add_anomaly(ts, "data_exfil", "HIGH", src_ip, dst_ip,
                                   f"Possible data exfiltration: {src_ip}→{dst_ip} >100MB")
 
